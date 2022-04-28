@@ -37,5 +37,17 @@ export const Assignments = () => {
     return assignmentHTML
 }
 
-// Test
+document.addEventListener("click", (clickEvent) => {
+    const itemClicked = clickEvent.target
+    if (itemClicked.id.startsWith("pet")) {
+        const [, petId] = itemClicked.id.split("--")
+
+        for (const currentPet of pets) {
+            if (currentPet.id === parseInt(petId)) {
+                const walker = findPetWalker(currentPet, walkers)
+                window.alert(`${currentPet.name} is being walked by ${walker.name}`)
+            }
+        }
+    }
+})
 
